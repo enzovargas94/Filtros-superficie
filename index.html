@@ -6,8 +6,8 @@
   <title>Reconstrucción de superficie — Videos</title>
   <style>
     :root{
-      /* Cambia este ancho para agrandar o achicar todo el mosaico */
-      --wrap-max: 1400px;         /* 1200, 1400, 1600 o 100% si quieres a todo el ancho */
+      /* Aumenta este ancho para ver los videos más grandes (1600px, 1800px o 100%) */
+      --wrap-max: 1400px;
     }
     body{
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
@@ -16,21 +16,25 @@
     .wrap{ max-width:var(--wrap-max); margin:0 auto; }
     h1{ margin:0 0 1rem 0; font-size:clamp(1.6rem, 2.5vw, 2.2rem); }
 
-    /* Grid responsivo */
+    /* Grid responsivo de tarjetas */
     .grid{
       display:grid; gap:20px;
-      grid-template-columns:repeat(auto-fit, minmax(360px, 1fr));
+      grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
       align-items:start;
     }
-
-    /* Tarjetas con título */
-    .card{ background:#fff; border-radius:12px; overflow:hidden;
-           box-shadow:0 2px 12px rgba(0,0,0,.12); }
+    /* Tarjeta + estilos del título */
+    .card{
+      background:#fff; border-radius:12px; overflow:hidden;
+      box-shadow:0 2px 12px rgba(0,0,0,.12);
+    }
     .card video{ width:100%; display:block; }
-    .card figcaption{ padding:.65rem .9rem; color:#333; font-weight:600; }
+    .card figcaption{
+      padding:.65rem .9rem; color:#333; font-weight:600;
+      line-height:1.25; border-top:1px solid #eee;
+    }
 
-    /* Si tienes pantallas grandes y quieres aún más ancho mínimo por tarjeta */
-    @media (min-width: 1400px){
+    /* En pantallas grandes puedes forzar tarjetas más anchas */
+    @media (min-width:1400px){
       .grid{ grid-template-columns:repeat(3, minmax(420px, 1fr)); }
     }
   </style>
@@ -51,14 +55,14 @@
         <video controls playsinline preload="metadata" poster="poster2.jpg">
           <source src="GaussianFilter.mp4" type="video/mp4">
         </video>
-        <figcaption>Filtro Gaussiano — suavizado espacial</figcaption>
+        <figcaption>Filtro Gaussiano — Suavizado espacial</figcaption>
       </figure>
 
       <figure class="card">
         <video controls playsinline preload="metadata" poster="poster3.jpg">
           <source src="AveragingFilter.mp4" type="video/mp4">
         </video>
-        <figcaption>Filtro de promediado — kernel uniforme</figcaption>
+        <figcaption>Filtro de Promediado — Kernel uniforme</figcaption>
       </figure>
     </div>
   </div>
